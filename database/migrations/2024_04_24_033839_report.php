@@ -18,7 +18,9 @@ return new class extends Migration
             
             //want to create incident type using input type select around 20 manual display
             $table->string('incident_type');
-            $table->date('data_incident');
+            $table->date('date_incident');
+            $table->string('province');
+
             $table->string('incident_location');
             $table->string('incident_description');
             //type for lat and long

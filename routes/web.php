@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\ContactUs;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Xml\Report;
+use App\Http\Controllers\ServiceReport;
+use App\Http\Controllers\Feedback;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +30,21 @@ Route::middleware('auth')->group(function () {
     
     Route::controller(ReportController::class)->group(function(){
 
+
+        //get form
+
         Route::get('/reports', 'showForm')->name('show.form');
+
+        //post form
+
+        Route::post('/reports/create', 'storeForm')->name('store.form');
+
 
     });
 
     Route::controller(ContactUs::class)->group(function(){
+
+        //contact-us
 
         Route::get('/contact-us', 'showContact')->name('show.contact.us');
         
@@ -43,6 +53,26 @@ Route::middleware('auth')->group(function () {
         Route::get('/about-us', 'showAbout')->name('show.about.us');
 
     });
+
+    Route::controller(ServiceReport::class)->group(function(){
+
+        //service report
+        Route::get('/service/fire', 'showService')->name('show.fire');
+
+        //emergency
+        
+        Route::get('/emergency' , 'showEmergency')->name('show.emergency');
+        
+    });
+
+    Route::controller(Feedback::class)->group(function(){
+
+        //feedback
+
+        Route::get('/feedback', 'showFeedback')->name('show.feedback');
+
+    });
+
 
 });
 
