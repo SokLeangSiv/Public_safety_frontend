@@ -9,12 +9,14 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./vendor/jubeki/laravel-alpine-animations/resources/**/*.blade.php"
   ],
   theme: {
     extend: {},
   },
   daisyui: {
-     themes: ["cupcake", "cmyk"],
+     themes: ["cupcake"],
   },
   plugins: [require("daisyui")],
+  darkMode: 'class',
 };
