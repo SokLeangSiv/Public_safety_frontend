@@ -24,10 +24,15 @@ class UserProfileController extends Controller
 {
     // Validate the request data of user profile
     $this->validate($request, [
-        'name' => 'required',
-        'password' => 'required',
+        'name' => 'nullable',
+        'password' => 'nullable|min:8',
         'image' => 'nullable|image|max:2048', // Add validation for image
     ]);
+
+    //if the user input null return to back
+    if ($request->name == null && $request->password == null && $request->image == null) {
+        return redirect()->back();
+    }
 
     // Create a new user profile object
     $user = User::find(auth()->user()->id);
